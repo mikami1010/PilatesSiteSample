@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【スタジオ名】 - インストラクター紹介</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* =======================================
+           カスタム変数と基本スタイル
+           ======================================= */
+        :root {
+            --color-primary: #1a1a1a; /* 濃いグレー */
+            --color-secondary: #f4f4f4; /* 薄いグレー */
+            --color-accent: #A58F5B; /* ダスティゴールド */
+            --color-light: #ffffff;
+            --font-sans: 'Inter', 'Noto Sans JP', sans-serif;
+            --font-serif: 'Times New Roman', 'Noto Serif JP', serif;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-primary);
+            background-color: var(--color-light);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .max-width-container {
+            max-width: 1280px; /* 7xl相当 */
+            margin: 0 auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        /* セクション共通スタイル */
+        .section-padding {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+        @media (min-width: 768px) {
+            .section-padding {
+                padding-top: 6rem;
+                padding-bottom: 6rem;
+            }
+        }
+        
+        .text-center { text-align: center; }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+        }
+        @media (max-width: 768px) {
+             .section-title {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+             }
+        }
+
+        .section-catch {
+            font-size: 0.875rem;
+            letter-spacing: 0.2em;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .text-gray {
+             color: #4b5563;
+        }
+
+        /* =======================================
+           ヘッダー・フッター
+           ======================================= */
+        .header-main {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: var(--color-light);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #1a1a1a;
+            font-family: var(--font-serif);
+        }
+
+        /* ナビゲーションリンクのスタイル */
+        .nav-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin: 0 1.25rem; /* リンク間のスペース */
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--color-primary);
+            padding-bottom: 0.25rem;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s, color 0.3s;
+            letter-spacing: 0.05em;
+            display: block;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: var(--color-accent);
+        }
+
+        .nav-links .active a {
+            color: var(--color-accent);
+            border-bottom-color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        @media (max-width: 1024px) {
+            .nav-links {
+                display: none;
+            }
+        }
+        
+        .footer {
+            background-color: #1a1a1a;
+            color: #a0a0a0;
+            padding: 2rem 0;
+            font-size: 0.875rem;
+        }
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-links a {
+            margin-left: 1rem;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--color-light);
+        }
+        @media (min-width: 768px) {
+            .footer-content {
+                flex-direction: row;
+            }
+        }
+
+
+        /* =======================================
+           CTAボタン
+           ======================================= */
+        .cta-btn-primary {
+            display: inline-block;
+            background-color: var(--color-accent);
+            color: var(--color-primary);
+            padding: 0.75rem 2rem;
+            border-radius: 0.375rem;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .cta-btn-primary:hover {
+            background-color: #C1A76E;
+            transform: translateY(-2px);
+        }
+        
+        /* =======================================
+           ヒーローセクション
+           ======================================= */
+        .inst-hero {
+            height: 40vh;
+            min-height: 300px;
+            background-color: var(--color-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .inst-hero .hero-text-content {
+             z-index: 2;
+             text-align: center;
+        }
+        .inst-hero h1 {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            letter-spacing: 0.15em;
+            color: var(--color-primary);
+        }
+        @media (max-width: 768px) {
+            .inst-hero h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* =======================================
+           インストラクターカード
+           ======================================= */
+        .instructor-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .instructor-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            background-color: var(--color-light);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+        @media (min-width: 1024px) {
+            .instructor-card {
+                flex-direction: row;
+                text-align: left;
+                align-items: flex-start;
+                padding: 3rem;
+            }
+            /* 偶数番目のカードで順序を反転 */
+            .instructor-card:nth-child(even) {
+                flex-direction: row-reverse;
+            }
+            .instructor-card:nth-child(even) .inst-photo {
+                margin-left: 3rem;
+                margin-right: 0;
+            }
+        }
+
+        .inst-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            border: 4px solid var(--color-accent);
+            flex-shrink: 0;
+        }
+        .inst-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        @media (min-width: 1024px) {
+            .inst-photo {
+                width: 200px;
+                height: 200px;
+                margin-bottom: 0;
+                margin-right: 3rem;
+            }
+        }
+
+        .inst-details {
+            flex-grow: 1;
+        }
+
+        .inst-details h3 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+        }
+        .inst-details .title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        @media (max-width: 1024px) {
+            .inst-details h3, .inst-details .title {
+                text-align: center;
+            }
+        }
+        
+        .inst-details .biography {
+            color: #4b5563;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+        
+        .inst-details .qualifications {
+            border-top: 1px dashed #d1d5db;
+            padding-top: 1rem;
+        }
+        .inst-details .qualifications h4 {
+            font-size: 1.125rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-primary);
+        }
+        .inst-details .qualifications ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+        .inst-details .qualifications li {
+            font-size: 0.95rem;
+            color: #6b7280;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .inst-details .qualifications li i {
+            color: var(--color-accent);
+            margin-right: 0.5rem;
+        }
+        .inst-details .qualifications .cert-list {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+        @media (min-width: 768px) {
+            .inst-details .qualifications .cert-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* =======================================
+           最終CTA
+           ======================================= */
+        .final-cta-section {
+            background-color: #2c2c2c;
+            color: var(--color-light);
+            padding: 4rem 1rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        .final-cta-section h3 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .final-cta-section p {
+            color: #d1d5db;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. ヘッダー -->
+    <header class="header-main">
+        <div class="max-width-container header-content">
+            <a href="index.html" class="logo">【スタジオ名】</a>
+            
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="index.html">トップ</a></li>
+                    <li><a href="service.html">サービス</a></li>
+                    <li class="active"><a href="instructors.html">インストラクター</a></li>
+                    <li><a href="philosophy.html">スタジオ紹介</a></li>
+                </ul>
+            </nav>
+            
+            <a href="booking.html" class="cta-btn-primary">ご予約</a>
+        </div>
+    </header>
+
+    <!-- 2. ヒーローセクション (FV) -->
+    <section class="inst-hero">
+        <div class="hero-text-content">
+            <p class="section-catch">PROFESSIONAL INSTRUCTORS</p>
+            <h1>確かな知識と経験を持つ専門家</h1>
+        </div>
+    </section>
+
+    <!-- 3. インストラクター一覧 -->
+    <section class="section-padding">
+        <div class="max-width-container text-center">
+            <p class="section-catch">OUR TEAM</p>
+            <h3 class="section-title">あなたの変化を導くパートナー</h3>
+            <p style="max-width: 800px; margin: 0 auto 3rem;" class="text-gray">
+                当スタジオのインストラクターは全員、世界的に認められた資格を持ち、豊富な指導経験を誇ります。医学的知識に基づき、安全かつ効果的にあなたの身体と向き合います。
+            </p>
+
+            <div class="instructor-grid">
+
+                <!-- インストラクター 1: 代表/主任 -->
+                <div class="instructor-card">
+                    <div class="inst-photo">
+                        <img src="https://placehold.co/200x200/555555/A58F5B?text=Instructor+A" alt="インストラクター Aの写真">
+                    </div>
+                    <div class="inst-details">
+                        <h3>鈴木 陽子 <span style="font-size: 0.8em; font-weight: 400;">(Yoko Suzuki)</span></h3>
+                        <span class="title">代表インストラクター / STOTT PILATES認定</span>
+                        
+                        <p class="biography">
+                            スタジオ代表として、お客様一人ひとりが持つ潜在的な身体能力を引き出すことを使命としています。元理学療法士としての経験を活かし、リハビリテーションの観点から機能改善に特化したセッションを得意としています。特に、**産後の骨盤調整**や、**慢性的な腰痛・肩こり**の根本改善に高い実績があります。お客様の「なりたい自分」を実現するため、熱意を持ってサポートいたします。
+                        </p>
+                        
+                        <div class="qualifications">
+                            <h4>主な資格・実績</h4>
+                            <ul class="cert-list">
+                                <li><i class="fas fa-medal"></i> STOTT PILATES® 全レベル認定</li>
+                                <li><i class="fas fa-medal"></i> 元 理学療法士 (国家資格)</li>
+                                <li><i class="fas fa-medal"></i> マタニティ＆産後ピラティス専門コース修了</li>
+                                <li><i class="fas fa-medal"></i> バイオメカニクスに基づいた動作分析講師</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- インストラクター 2: 経験豊富なベテラン -->
+                <div class="instructor-card">
+                    <div class="inst-photo">
+                        <img src="https://placehold.co/200x200/808080/A58F5B?text=Instructor+B" alt="インストラクター Bの写真">
+                    </div>
+                    <div class="inst-details">
+                        <h3>田中 美紀 <span style="font-size: 0.8em; font-weight: 400;">(Miki Tanaka)</span></h3>
+                        <span class="title">シニアインストラクター / BASI PILATES認定</span>
+                        
+                        <p class="biography">
+                            ピラティス歴15年、指導実績1万時間以上のベテラン講師です。アスリートから高齢者まで、幅広い層のクライアントを担当。特に、ゴルフやダンスなどの**パフォーマンス向上**を目指す方に、体幹の安定性と柔軟性を高める指導を提供しています。楽しく、そして確実に変化を感じていただけるセッションを心がけています。
+                        </p>
+                        
+                        <div class="qualifications">
+                            <h4>主な資格・実績</h4>
+                            <ul class="cert-list">
+                                <li><i class="fas fa-medal"></i> BASI PILATES Comprehensive認定</li>
+                                <li><i class="fas fa-medal"></i> TRXサスペンショントレーニング認定</li>
+                                <li><i class="fas fa-medal"></i> ジャイロキネシス® アプレンティス</li>
+                                <li><i class="fas fa-medal"></i> 姿勢改善・O脚X脚矯正エキスパート</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                 <!-- インストラクター 3: 若手ホープ -->
+                <div class="instructor-card">
+                    <div class="inst-photo">
+                        <img src="https://placehold.co/200x200/AAAAAA/A58F5B?text=Instructor+C" alt="インストラクター Cの写真">
+                    </div>
+                    <div class="inst-details">
+                        <h3>佐藤 綾香 <span style="font-size: 0.8em; font-weight: 400;">(Ayaka Sato)</span></h3>
+                        <span class="title">認定インストラクター / Balanced Body認定</span>
+                        
+                        <p class="biography">
+                            美容と健康への意識が高く、お客様のモチベーション維持を最も大切にしています。現代女性特有の**ストレスからくる不調**や、**ダイエット**を目的としたピラティスを得意とし、お客様のライフスタイルに合わせた無理のない継続をサポートします。明るくフレンドリーな指導で、ピラティスを習慣化できるよう導きます。
+                        </p>
+                        
+                        <div class="qualifications">
+                            <h4>主な資格・実績</h4>
+                            <ul class="cert-list">
+                                <li><i class="fas fa-medal"></i> Balanced Body 全マシン認定</li>
+                                <li><i class="fas fa-medal"></i> 栄養士資格保有</li>
+                                <li><i class="fas fa-medal"></i> 全米ヨガアライアンス RYT200</li>
+                                <li><i class="fas fa-medal"></i> 体重コントロールのための食事指導経験</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+    <!-- 4. 最終CTA -->
+    <section class="final-cta-section">
+        <div class="max-width-container">
+            <h3>あなた専属のインストラクターが、<br>最高の結果を約束します。</h3>
+            <p>
+                まずは初回体験で、身体の専門家にご自身の状態を診断してもらいましょう。
+            </p>
+            <a href="booking.html" class="cta-btn-primary" style="background-color: var(--color-accent); color: var(--color-primary);">
+                初回体験のご予約はこちら
+            </a>
+        </div>
+    </section>
+
+
+    <!-- 5. フッター -->
+    <footer class="footer">
+        <div class="max-width-container footer-content">
+            <p class="footer-copyright" style="margin-bottom: 1rem;">© 2024 【スタジオ名】. All Rights Reserved.</p>
+            <div class="footer-links" style="margin-top: 1rem;">
+                <a href="privacy.html">プライバシーポリシー</a>
+                <a href="terms.html">利用規約</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

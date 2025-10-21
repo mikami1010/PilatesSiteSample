@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【スタジオ名】 - ご予約・初回体験</title>
+    <meta name="description" content="恵比寿のプライベートマシンピラティススタジオ【スタジオ名】の初回体験レッスンご予約ページ。今すぐ予約して、エレガントな変化を始めましょう。">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* =======================================
+           カスタム変数と基本スタイル
+           ======================================= */
+        :root {
+            --color-primary: #1a1a1a; /* 濃いグレー */
+            --color-secondary: #f4f4f4; /* 薄いグレー */
+            --color-accent: #A58F5B; /* ダスティゴールド */
+            --color-light: #ffffff;
+            --font-sans: 'Inter', 'Noto Sans JP', sans-serif;
+            --font-serif: 'Times New Roman', 'Noto Serif JP', serif;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-primary);
+            background-color: var(--color-light);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .max-width-container {
+            max-width: 1000px; /* Bookingページはやや狭めに設定 */
+            margin: 0 auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        /* セクション共通スタイル */
+        .section-padding {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+        @media (min-width: 768px) {
+            .section-padding {
+                padding-top: 6rem;
+                padding-bottom: 6rem;
+            }
+        }
+        
+        .text-center { text-align: center; }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+        }
+        @media (max-width: 768px) {
+             .section-title {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+             }
+        }
+
+        .section-catch {
+            font-size: 0.875rem;
+            letter-spacing: 0.2em;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .text-gray {
+             color: #4b5563;
+        }
+        .bg-gray-light {
+            background-color: var(--color-secondary);
+        }
+        
+        /* =======================================
+           ヘッダー・フッター (Navはシンプル化)
+           ======================================= */
+        .header-main {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: var(--color-light);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #1a1a1a;
+            font-family: var(--font-serif);
+        }
+
+        .back-link {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #4b5563;
+            transition: color 0.3s;
+        }
+        .back-link:hover {
+            color: var(--color-accent);
+        }
+        
+        .footer {
+            background-color: #1a1a1a;
+            color: #a0a0a0;
+            padding: 2rem 0;
+            font-size: 0.875rem;
+            text-align: center;
+        }
+        .footer-links a {
+            margin: 0 0.75rem;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--color-light);
+        }
+
+
+        /* =======================================
+           メインCTAボタン (強調)
+           ======================================= */
+        .cta-booking-btn {
+            display: inline-block;
+            background-color: var(--color-accent);
+            color: var(--color-primary);
+            padding: 1.5rem 4rem;
+            border-radius: 9999px; /* Pill shape */
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 20px rgba(165, 143, 91, 0.4);
+            animation: pulse 2s infinite;
+        }
+        .cta-booking-btn:hover {
+            background-color: #C1A76E;
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(165, 143, 91, 0.6);
+            animation: none;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(165, 143, 91, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(165, 143, 91, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(165, 143, 91, 0); }
+        }
+        @media (max-width: 640px) {
+            .cta-booking-btn {
+                font-size: 1.25rem;
+                padding: 1.25rem 3rem;
+            }
+        }
+        
+        /* =======================================
+           予約ステップ
+           ======================================= */
+        .step-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        @media (min-width: 768px) {
+            .step-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 3rem;
+            }
+        }
+
+        .step-item {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            background-color: var(--color-light);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .step-number {
+            font-size: 3rem;
+            font-family: var(--font-serif);
+            color: var(--color-accent);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .step-item h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 0.75rem;
+        }
+        .step-item p {
+            font-size: 0.95rem;
+            color: #6b7280;
+        }
+
+        /* 矢印 (デスクトップのみ) */
+        .step-grid .step-item:not(:last-child)::after {
+            content: "\f054"; /* Font Awesome Chevron Right */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #cccccc;
+            font-size: 1.5rem;
+            position: absolute;
+            top: 50%;
+            right: -2.5rem;
+            transform: translateY(-50%);
+            display: none;
+        }
+        @media (min-width: 768px) {
+            .step-grid .step-item:not(:last-child)::after {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. ヘッダー (シンプル版) -->
+    <header class="header-main">
+        <div class="max-width-container header-content">
+            <a href="index.html" class="logo">【スタジオ名】</a>
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left" style="margin-right: 0.5rem;"></i> トップページに戻る
+            </a>
+        </div>
+    </header>
+
+    <!-- 2. ヒーローCTAセクション -->
+    <section class="section-padding text-center" style="background-color: var(--color-secondary);">
+        <div class="max-width-container">
+            <p class="section-catch">BOOK YOUR FIRST TRIAL</p>
+            <h1 class="section-title" style="font-size: 3rem; color: var(--color-accent); margin-bottom: 1rem;">
+                初回体験レッスン予約
+            </h1>
+            <p style="font-size: 1.25rem; max-width: 700px; margin: 0 auto 3rem;" class="text-gray">
+                経験豊富なインストラクターによるプライベートセッションで、あなたの身体が持つ可能性を最大限に引き出します。
+            </p>
+            
+            <!-- メイン CTA ボタン -->
+            <a href="#external-booking-system" class="cta-booking-btn">
+                <i class="fas fa-calendar-check" style="margin-right: 1rem;"></i> 予約サイトへ進む
+            </a>
+
+            <p style="margin-top: 2rem; font-size: 0.9rem; color: #6b7280;">
+                ※外部の予約システム（STORES予約/Coubic等）へ移動します。
+            </p>
+        </div>
+    </section>
+
+    <!-- 3. 予約ステップガイド -->
+    <section class="section-padding">
+        <div class="max-width-container text-center">
+            <p class="section-catch">EASY STEP</p>
+            <h3 class="section-title">ご予約までの簡単な3ステップ</h3>
+            
+            <div class="step-grid">
+                
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <h4>日程を選択</h4>
+                    <p>上記のボタンから予約サイトへ移動し、ご希望のクラスと日時をカレンダーから選択してください。</p>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <h4>情報入力・決済</h4>
+                    <p>お名前、ご連絡先、事前アンケートにご回答後、体験料金（¥4,980）をオンラインにて決済ください。</p>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <h4>予約完了</h4>
+                    <p>予約完了メールが届いたら予約確定です。当日は動きやすい服装でお越しください。</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 初回体験の価値 -->
+    <section class="section-padding bg-gray-light" style="margin-top: -1px;">
+        <div class="max-width-container text-center">
+            <h3 class="section-title" style="margin-bottom: 1.5rem;">初回体験で得られる3つのこと</h3>
+            
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+                <div style="max-width: 300px; padding: 1rem;">
+                    <i class="fas fa-stethoscope fa-3x" style="color: var(--color-accent); margin-bottom: 1rem;"></i>
+                    <h4 style="font-size: 1.25rem; margin-bottom: 0.5rem;">身体の徹底診断</h4>
+                    <p class="text-gray">姿勢、歪み、可動域など、現在の身体の状態を専門家が詳細に分析します。</p>
+                </div>
+                <div style="max-width: 300px; padding: 1rem;">
+                    <i class="fas fa-drafting-compass fa-3x" style="color: var(--color-accent); margin-bottom: 1rem;"></i>
+                    <h4 style="font-size: 1.25rem; margin-bottom: 0.5rem;">あなた専用プラン</h4>
+                    <p class="text-gray">目標達成に向けた最適なピラティス・トレーニングの個別指導計画を立案します。</p>
+                </div>
+                <div style="max-width: 300px; padding: 1rem;">
+                    <i class="fas fa-hand-holding-heart fa-3x" style="color: var(--color-accent); margin-bottom: 1rem;"></i>
+                    <h4 style="font-size: 1.25rem; margin-bottom: 0.5rem;">即座に効果を実感</h4>
+                    <p class="text-gray">初回から身体の軽さや使い方の変化を実感し、ピラティスの効果を体感できます。</p>
+                </div>
+            </div>
+
+            <!-- リマインダーCTA -->
+            <a href="#external-booking-system" class="cta-booking-btn" style="margin-top: 4rem;">
+                <i class="fas fa-arrow-right" style="margin-right: 1rem;"></i> 予約に進む
+            </a>
+
+        </div>
+    </section>
+
+    <!-- 5. フッター -->
+    <footer class="footer">
+        <div class="max-width-container">
+            <p class="footer-copyright" style="margin-bottom: 1rem;">© 2024 【スタジオ名】. All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="privacy.html">プライバシーポリシー</a>
+                <a href="terms.html">利用規約</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

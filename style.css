@@ -1,0 +1,497 @@
+/* --- 変数設定 (高級感のある配色とフォント) --- */
+:root {
+    --color-main: #6B705E; /* グレージュ系や深いグリーンなど、落ち着いた色 */
+    --color-accent: #B08968; /* ゴールドまたはくすみのあるローズ系 */
+    --color-text: #333333;
+    --color-bg: #FFFFFF;
+    --color-light-bg: #F9F9F7;
+
+    /* 上品なフォント設定 (明朝体やセリフ体) */
+    --font-serif: "Times New Roman", "游明朝", YuMincho, serif;
+    --font-sans: "Helvetica Neue", Arial, sans-serif;
+}
+
+/* --- 基本リセットと共通スタイル --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-main);
+    transition: opacity 0.3s;
+}
+
+.inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 100px 0;
+}
+
+.section-catch {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: var(--color-accent);
+    text-align: center;
+    letter-spacing: 0.1em;
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--color-main);
+}
+
+/* --- CTA ボタンのスタイル --- */
+.cta-btn {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: var(--color-accent);
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+    text-align: center;
+    letter-spacing: 0.1em;
+}
+.cta-btn:hover {
+    opacity: 0.8;
+}
+
+/* --- 1. ヘッダー / グローバルナビゲーション --- */
+.header {
+    position: absolute; /* ファーストビューの上に重ねる */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+}
+.logo {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    letter-spacing: 0.2em;
+    color: #fff; /* ファーストビューの画像の上に白文字で配置 */
+}
+.gnav ul {
+    list-style: none;
+    display: flex;
+}
+.gnav li a {
+    color: #fff;
+    padding: 10px 15px;
+    font-family: var(--font-serif);
+}
+.cta-booking {
+    /* CTAボタン（体験予約）は他のリンクと差別化 */
+    background-color: var(--color-accent);
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 3px;
+}
+
+/* --- 1. ファーストビュー (Hero) --- */
+.hero {
+    position: relative;
+    /* 画面いっぱいに表示しつつ、コンテンツが増えても対応できるように最小高さを設定 */
+    min-height: 800px; /* デスクトップでの最低限の高さ */
+    height: 100vh; /* ビューポートの高さに合わせて伸縮 */
+    overflow: hidden;
+}
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    /* 画像がコンテナを覆うように設定（これが重要） */
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.7);
+}
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+    /* この行を削除、または normal に変更します */
+    /* white-space: nowrap; <--- 削除 or 変更 */
+    width: 90%; /* コンテンツの最大幅を制限して、中央で折り返しやすくする */
+    max-width: 800px; /* 見栄えの良い最大の幅を設定 */
+}
+.hero-content .tagline {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    letter-spacing: 0.15em;
+}
+.hero-content h2 {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+    letter-spacing: 0.05em;
+    line-height: 1.3; /* 折り返した時の行間を調整するとエレガントに見えます */
+    white-space: normal; /* 折り返しを有効にする */
+}
+
+/* --- 2. コンセプト --- */
+.concept {
+    background-color: var(--color-light-bg);
+}
+.concept .text {
+    max-width: 800px;
+    margin: 30px auto 40px;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 2;
+}
+.link-text {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    color: var(--color-main);
+}
+
+/* --- 3. 強み --- */
+.feature-list {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    margin-top: 50px;
+}
+.feature-item {
+    width: 30%;
+    text-align: center;
+}
+.feature-item .icon {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    color: var(--color-accent);
+    margin-bottom: 15px;
+}
+.feature-item h4 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: var(--color-main);
+}
+
+/* --- 4. サービス導線 --- */
+.service-cards {
+    display: flex;
+    justify-content: center;
+    /* 2つ並びに戻したのでgapを広げる */
+    gap: 40px; 
+    margin-bottom: 50px;
+}
+/* two-columnsクラスを追加して、カードの幅を変更 */
+.service-cards.two-columns .card {
+    width: 45%; /* 幅を広げ、高級感のあるゆとりを持たせる */
+    background-color: var(--color-light-bg);
+    overflow: hidden;
+    text-align: center;
+}
+.service-cards img {
+    width: 100%;
+    height: 300px; /* 高さを戻す */
+    object-fit: cover;
+    display: block;
+}
+.service-cards p {
+    padding: 10px 0 5px;
+    font-size: 0.9rem;
+    color: var(--color-accent);
+}
+.service-cards h4 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem; /* サイズを戻す */
+    padding: 0 10px 15px;
+    margin: 0;
+    text-align: center;
+}
+.service-cards .cta-link {
+    display: block;
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+
+.cta-bottom {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* --- 5, 6, 7. 導線セクション (インストラクター、声、ギャラリー) --- */
+.links-group {
+    background-color: var(--color-light-bg);
+}
+.links-group .inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+.link-item {
+    width: 32%;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+}
+.link-item img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    filter: brightness(0.6);
+    transition: filter 0.3s;
+}
+.link-item:hover img {
+    filter: brightness(0.8);
+}
+.link-item h4 {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    letter-spacing: 0.1em;
+}
+.link-item p {
+    position: absolute;
+    top: 55%;
+    width: 100%;
+    font-size: 0.9rem;
+}
+.link-item .cta-link {
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 5px;
+}
+
+
+/* --- 8. アクセス情報 --- */
+.access-info {
+    padding-bottom: 50px;
+}
+.info-details {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+.info-details p {
+    margin-bottom: 10px;
+}
+
+/* --- 9. 最終CTA --- */
+.final-cta {
+    text-align: center;
+    padding: 50px 0;
+    background-color: var(--color-main);
+}
+.final-cta .cta-btn.secondary {
+    background-color: var(--color-accent);
+    margin-bottom: 20px;
+}
+.cta-tel {
+    display: block;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* --- 10. フッター --- */
+.footer {
+    background-color: var(--color-text);
+    color: #fff;
+    padding: 30px 0;
+}
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+}
+.company-info a {
+    color: #ccc;
+    margin-left: 15px;
+}
+
+/* ------------------------------------
+   この下にレスポンシブデザインのための
+   メディアクエリなどを記述します。
+   ------------------------------------ */
+/* =======================================
+   3. レスポンシブ対応 (スマートフォン向け)
+   ======================================= */
+@media (max-width: 768px) {
+    
+    /* --- 共通調整 --- */
+    .section {
+        padding: 60px 0; /* セクションの上下の余白を詰める */
+    }
+    .section-title {
+        font-size: 1.8rem; /* タイトルを小さく */
+        margin-bottom: 30px;
+    }
+    .inner {
+        padding: 0 15px; /* 左右の余白を詰める */
+    }
+    
+    /* --- 1. ヘッダー / グローバルナビゲーション --- */
+    .header-inner {
+        padding: 15px;
+    }
+    .logo {
+        font-size: 1.5rem;
+    }
+    .gnav {
+        /* モバイルではナビゲーションはハンバーガーメニュー等で非表示にするのが一般的ですが、
+           ここでは簡易的に非表示とします。 */
+        display: none; 
+    }
+    /* CTAボタンを右端に配置 */
+    .cta-booking {
+        padding: 6px 15px;
+        font-size: 0.9rem;
+    }
+    
+    /* --- 1. ファーストビュー (Hero) の修正 --- */
+    .hero {
+        /* モバイルでは固定の高さを設定するか、vhを低めに設定して安定させる */
+        min-height: 450px; /* モバイルでの最低限の高さ */
+        height: 80vh; /* 画面に対して少し余裕を持たせ、空白が出にくいように調整 */
+    }
+    .hero-content {
+        width: 90%; /* コンテンツの幅を広げる */
+    }
+    .hero-content .tagline {
+        font-size: 1rem;
+    }
+    .hero-content h2 {
+        font-size: 1.8rem; /* メインコピーを小さく */
+        margin-bottom: 20px;
+        line-height: 1.4;
+        white-space: normal; /* 折り返しを許可 */
+    }
+    .cta-btn.large {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+    
+    /* --- 3. 強み (Feature) --- */
+    .feature-list {
+        flex-direction: column; /* 縦に並べる */
+        gap: 40px;
+    }
+    .feature-item {
+        width: 100%; /* 幅をいっぱいに広げる */
+    }
+    
+    /* --- 4. メニュー（商品紹介）への導線 (Service) --- */
+    .service-cards {
+        flex-direction: column; /* 縦に並べる */
+        gap: 30px;
+    }
+    .service-cards.two-columns .card {
+        width: 100%; /* 幅をいっぱいに広げる */
+        max-width: 400px; /* カードの最大幅を設定し、中央に寄せる */
+        margin: 0 auto;
+    }
+    .service-cards img {
+        height: 200px; /* 画像の高さを調整 */
+    }
+    .service-cards h4 {
+        font-size: 1.3rem;
+    }
+    .cta-bottom p {
+        font-size: 1rem;
+    }
+
+    /* --- 5, 6, 7. 導線セクション (Links-group) --- */
+    .links-group .inner {
+        flex-direction: column; /* 縦に並べる */
+        gap: 20px;
+    }
+    .link-item {
+        width: 100%; /* 幅をいっぱいに広げる */
+    }
+    .link-item img {
+        height: 250px; /* 画像の高さを調整 */
+    }
+    /* テキストの位置を調整 */
+    .link-item h4 {
+        top: 35%;
+        font-size: 1.8rem;
+    }
+    .link-item p {
+        top: 52%;
+    }
+    .link-item .cta-link {
+        bottom: 12%;
+    }
+    
+    /* --- 8. アクセス情報 (Access) --- */
+    .map-container {
+        margin-bottom: 30px;
+        padding: 0; /* 地図は画面いっぱいまで広げる */
+    }
+    .info-details {
+        font-size: 1rem;
+    }
+    
+    /* --- 9. 最終CTA (Final-cta) --- */
+    .final-cta {
+        padding: 40px 15px;
+    }
+    .cta-tel {
+        font-size: 1.3rem; /* 電話番号を小さく */
+    }
+    
+    /* --- 10. フッター (Footer) --- */
+    .footer-inner {
+        flex-direction: column; /* 縦に並べる */
+        text-align: center;
+    }
+    .footer-nav {
+        margin-bottom: 15px; /* ナビゲーションと情報の間隔 */
+    }
+    .company-info {
+        /* 著作権表示のレイアウト調整 */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .company-info p:first-child {
+        margin-bottom: 5px;
+    }
+    .company-info a {
+        margin: 0 5px;
+    }
+}

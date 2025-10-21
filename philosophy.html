@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【スタジオ名】 - スタジオ紹介と理念</title>
+    <meta name="description" content="恵比寿のプライベートマシンピラティススタジオ【スタジオ名】のコンセプト、アクセス詳細、営業時間、内装のご紹介。">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* =======================================
+           カスタム変数と基本スタイル
+           ======================================= */
+        :root {
+            --color-primary: #1a1a1a; /* 濃いグレー */
+            --color-secondary: #f4f4f4; /* 薄いグレー */
+            --color-accent: #A58F5B; /* ダスティゴールド */
+            --color-light: #ffffff;
+            --font-sans: 'Inter', 'Noto Sans JP', sans-serif;
+            --font-serif: 'Times New Roman', 'Noto Serif JP', serif;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-primary);
+            background-color: var(--color-light);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .max-width-container {
+            max-width: 1280px; /* 7xl相当 */
+            margin: 0 auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        /* セクション共通スタイル */
+        .section-padding {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+        @media (min-width: 768px) {
+            .section-padding {
+                padding-top: 6rem;
+                padding-bottom: 6rem;
+            }
+        }
+        
+        .text-center { text-align: center; }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+        }
+        @media (max-width: 768px) {
+             .section-title {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+             }
+        }
+
+        .section-catch {
+            font-size: 0.875rem;
+            letter-spacing: 0.2em;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .text-gray {
+             color: #4b5563;
+        }
+        .bg-gray-light {
+            background-color: var(--color-secondary);
+        }
+        
+        /* =======================================
+           ヘッダー・フッター
+           ======================================= */
+        .header-main {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: var(--color-light);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #1a1a1a;
+            font-family: var(--font-serif);
+        }
+
+        /* ナビゲーションリンクのスタイル */
+        .nav-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin: 0 1.25rem; /* リンク間のスペース */
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--color-primary);
+            padding-bottom: 0.25rem;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s, color 0.3s;
+            letter-spacing: 0.05em;
+            display: block;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: var(--color-accent);
+        }
+
+        .nav-links .active a {
+            color: var(--color-accent);
+            border-bottom-color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        @media (max-width: 1024px) {
+            .nav-links {
+                display: none;
+            }
+        }
+        
+        .footer {
+            background-color: #1a1a1a;
+            color: #a0a0a0;
+            padding: 2rem 0;
+            font-size: 0.875rem;
+        }
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-links a {
+            margin-left: 1rem;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--color-light);
+        }
+        @media (min-width: 768px) {
+            .footer-content {
+                flex-direction: row;
+            }
+        }
+
+
+        /* =======================================
+           CTAボタン
+           ======================================= */
+        .cta-btn-primary {
+            display: inline-block;
+            background-color: var(--color-accent);
+            color: var(--color-primary);
+            padding: 0.75rem 2rem;
+            border-radius: 0.375rem;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .cta-btn-primary:hover {
+            background-color: #C1A76E;
+            transform: translateY(-2px);
+        }
+        
+        /* =======================================
+           ヒーローセクション
+           ======================================= */
+        .page-hero {
+            height: 40vh;
+            min-height: 300px;
+            background-color: var(--color-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .page-hero .hero-text-content {
+             z-index: 2;
+             text-align: center;
+        }
+        .page-hero h1 {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            letter-spacing: 0.15em;
+            color: var(--color-primary);
+        }
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* =======================================
+           理念 (Philosophy)
+           ======================================= */
+        .philosophy-container {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            align-items: center;
+        }
+        @media (min-width: 1024px) {
+            .philosophy-container {
+                flex-direction: row;
+                text-align: left;
+            }
+        }
+
+        .philosophy-text {
+            flex: 2;
+        }
+        .philosophy-text h2 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            color: var(--color-accent);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.1em;
+        }
+        .philosophy-text p {
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+        }
+        .philosophy-text strong {
+            color: var(--color-accent);
+            font-weight: 700;
+        }
+
+        .philosophy-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .philosophy-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* =======================================
+           スタジオ空間 (Gallery)
+           ======================================= */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        @media (min-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .gallery-item {
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* =======================================
+           アクセス詳細
+           ======================================= */
+        .access-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        @media (min-width: 1024px) {
+            .access-grid {
+                grid-template-columns: 2fr 1fr;
+                gap: 4rem;
+            }
+        }
+
+        .map-container {
+            height: 400px;
+            background-color: #e0e0e0;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: #6b7280;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-table table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 1rem;
+        }
+        .info-table th, .info-table td {
+            text-align: left;
+            padding: 1rem 0;
+            border-bottom: 1px dashed #d1d5db;
+        }
+        .info-table th {
+            width: 35%;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+        .info-table td {
+            color: #4b5563;
+        }
+        .info-table .note {
+            font-size: 0.875rem;
+            color: var(--color-accent);
+            margin-top: 0.5rem;
+            display: block;
+        }
+        .route-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: var(--color-accent);
+            font-weight: 600;
+            border-bottom: 1px solid var(--color-accent);
+            padding-bottom: 0.25rem;
+        }
+        .route-link i {
+             margin-left: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. ヘッダー -->
+    <header class="header-main">
+        <div class="max-width-container header-content">
+            <a href="index.html" class="logo">【スタジオ名】</a>
+            
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="index.html">トップ</a></li>
+                    <li><a href="service.html">サービス</a></li>
+                    <li><a href="instructors.html">インストラクター</a></li>
+                    <li class="active"><a href="philosophy.html">スタジオ紹介</a></li>
+                </ul>
+            </nav>
+            
+            <a href="booking.html" class="cta-btn-primary">ご予約</a>
+        </div>
+    </header>
+
+    <!-- 2. ヒーローセクション -->
+    <section class="page-hero">
+        <div class="hero-text-content">
+            <p class="section-catch">OUR PHILOSOPHY</p>
+            <h1>スタジオの理念と空間</h1>
+        </div>
+    </section>
+
+    <!-- 3. スタジオ理念 -->
+    <section class="section-padding">
+        <div class="max-width-container">
+            <p class="section-catch text-center">CONCEPT</p>
+            <h3 class="section-title text-center">本質的な美しさを追求する</h3>
+
+            <div class="philosophy-container">
+                <div class="philosophy-text">
+                    <h2>Philosophy</h2>
+                    <p class="text-gray" style="line-height: 2;">
+                        私たちのスタジオは、単に運動をする場所ではありません。それは、あなたがご自身の身体と深く向き合い、<strong>本来持つ機能と美しさを取り戻すための「聖域」</strong>です。30代以降の女性のライフステージにおける身体の変化を理解し、その時々に最適なサポートを提供します。
+                    </p>
+                    <p class="text-gray" style="line-height: 2;">
+                        国際基準のマシンピラティスを通して、姿勢の癖や痛みの原因を根本から改善し、ご自身の<strong>「中心軸（コア）」を再構築</strong>します。内側から輝く、しなやかで自信に満ちた身体へ。私たちは、あなたの人生を豊かにするための本質的なサポートをお約束します。
+                    </p>
+                    <a href="instructors.html" class="cta-btn-primary" style="margin-top: 1rem;">
+                        インストラクターの紹介を見る
+                    </a>
+                </div>
+                <div class="philosophy-image">
+                    <img src="https://placehold.co/400x550/E6E0D6/333333?text=Studio+Philosophy" alt="スタジオコンセプトイメージ">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 4. スタジオ空間紹介 -->
+    <section class="section-padding bg-gray-light">
+        <div class="max-width-container text-center">
+            <p class="section-catch">SPACE</p>
+            <h3 class="section-title">恵比寿の静謐なプライベート空間</h3>
+            <p style="max-width: 800px; margin: 0 auto 3rem;" class="text-gray">
+                白とゴールドを基調とした、落ち着いたラグジュアリーな空間です。完全予約制のため、人目を気にせず、ご自身のペースでセッションに集中していただけます。
+            </p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x250/C8B594/333333?text=Reformer+Machine" alt="リフォーマーマシンの写真">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x250/EFECE6/333333?text=Cadillac+and+Chair" alt="キャデラックとチェアの写真">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x250/D1C9BE/333333?text=Relaxing+Interior" alt="落ち着いた内装の写真">
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem;">
+                <h4 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 1rem;">充実した設備</h4>
+                <ul style="list-style: none; padding: 0; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                    <li class="text-gray"><i class="fas fa-check-circle" style="color: var(--color-accent); margin-right: 0.5rem;"></i> 最高級リフォーマー完備</li>
+                    <li class="text-gray"><i class="fas fa-check-circle" style="color: var(--color-accent); margin-right: 0.5rem;"></i> 更衣室・アメニティ完備</li>
+                    <li class="text-gray"><i class="fas fa-check-circle" style="color: var(--color-accent); margin-right: 0.5rem;"></i> ウォーターサーバー設置</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. アクセス・営業時間 -->
+    <section class="section-padding">
+        <div class="max-width-container">
+            <p class="section-catch text-center">LOCATION & CONTACT</p>
+            <h3 class="section-title text-center">詳細アクセスと営業時間</h3>
+            
+            <div class="access-grid">
+                <div class="map-container">
+                    Google Mapsプレースホルダー<br>
+                    （正確な所在地は予約確定後にお知らせします）
+                </div>
+                
+                <div class="info-table">
+                    <table>
+                        <tr>
+                            <th>所在地</th>
+                            <td>東京都渋谷区恵比寿 (詳細は予約時にお知らせ)</td>
+                        </tr>
+                        <tr>
+                            <th>最寄駅</th>
+                            <td>JR山手線 恵比寿駅 東口より徒歩5分</td>
+                        </tr>
+                        <tr>
+                            <th>営業時間</th>
+                            <td>
+                                平日: 10:00 - 21:00 (最終受付 20:00)<br>
+                                土日祝: 9:00 - 18:00 (最終受付 17:00)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>定休日</th>
+                            <td>不定休 (年末年始、夏季休暇等)</td>
+                        </tr>
+                        <tr>
+                            <th>電話番号</th>
+                            <td>03-XXXX-XXXX (セッション中は出られない場合がございます)</td>
+                        </tr>
+                    </table>
+                    <a href="mailto:info@example.com" class="route-link">
+                        メールでお問い合わせ <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. 最終CTA -->
+    <section class="section-padding" style="padding-top: 0; background-color: var(--color-light);">
+        <div class="max-width-container text-center">
+            <h3 class="section-title" style="margin-bottom: 1.5rem;">エレガントな変化への最初の一歩を。</h3>
+            <a href="booking.html" class="cta-btn-primary" style="padding: 1rem 3rem; font-size: 1.125rem;">
+                初回体験レッスンを予約する
+            </a>
+        </div>
+    </section>
+
+    <!-- 7. フッター -->
+    <footer class="footer">
+        <div class="max-width-container footer-content">
+            <p class="footer-copyright" style="margin-bottom: 1rem;">© 2024 【スタジオ名】. All Rights Reserved.</p>
+            <div class="footer-links" style="margin-top: 1rem;">
+                <a href="privacy.html">プライバシーポリシー</a>
+                <a href="terms.html">利用規約</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

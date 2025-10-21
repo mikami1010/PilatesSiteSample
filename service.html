@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【スタジオ名】 - サービスと料金</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* =======================================
+           カスタム変数と基本スタイル
+           ======================================= */
+        :root {
+            --color-primary: #1a1a1a; /* 濃いグレー */
+            --color-secondary: #f4f4f4; /* 薄いグレー */
+            --color-accent: #A58F5B; /* ダスティゴールド */
+            --color-light: #ffffff;
+            --font-sans: 'Inter', 'Noto Sans JP', sans-serif;
+            --font-serif: 'Times New Roman', 'Noto Serif JP', serif;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-primary);
+            background-color: var(--color-light);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .max-width-container {
+            max-width: 1280px; /* 7xl相当 */
+            margin: 0 auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        /* セクション共通スタイル */
+        .section-padding {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+        @media (min-width: 768px) {
+            .section-padding {
+                padding-top: 6rem;
+                padding-bottom: 6rem;
+            }
+        }
+        
+        .text-center { text-align: center; }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+        }
+
+        .section-catch {
+            font-size: 0.875rem;
+            letter-spacing: 0.2em;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        /* =======================================
+           ヘッダー・フッター
+           ======================================= */
+        .header-main {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: var(--color-light);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #1a1a1a;
+            font-family: var(--font-serif);
+        }
+
+        /* ナビゲーションリンクのスタイル */
+        .nav-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin: 0 1.25rem; /* リンク間のスペース */
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--color-primary);
+            padding-bottom: 0.25rem;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s, color 0.3s;
+            letter-spacing: 0.05em;
+            display: block;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: var(--color-accent);
+        }
+
+        .nav-links .active a {
+            color: var(--color-accent);
+            border-bottom-color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        @media (max-width: 1024px) {
+            .nav-links {
+                /* モバイルではナビゲーションを非表示 */
+                display: none;
+            }
+            .header-content {
+                justify-content: space-between;
+            }
+        }
+
+
+        .footer {
+            background-color: #1a1a1a;
+            color: #a0a0a0;
+            padding: 2rem 0;
+            font-size: 0.875rem;
+        }
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-links a {
+            margin-left: 1rem;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--color-light);
+        }
+        @media (min-width: 768px) {
+            .footer-content {
+                flex-direction: row;
+            }
+            .footer-copyright {
+                margin-bottom: 0;
+            }
+        }
+
+
+        /* =======================================
+           CTAボタン
+           ======================================= */
+        .cta-btn-primary {
+            display: inline-block;
+            background-color: var(--color-accent);
+            color: var(--color-primary);
+            padding: 0.75rem 2rem;
+            border-radius: 0.375rem;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .cta-btn-primary:hover {
+            background-color: #C1A76E;
+            transform: translateY(-2px);
+        }
+        
+        /* =======================================
+           ヒーローセクション
+           ======================================= */
+        .service-hero {
+            height: 60vh;
+            min-height: 400px;
+            background-image: url('https://placehold.co/1920x1080/404040/A58F5B?text=Pilates+Machine+Room');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-light);
+        }
+        .service-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+        .hero-text-content {
+            z-index: 2;
+            padding: 0 1rem;
+        }
+        .hero-text-content p {
+            font-size: 1rem;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+        }
+        .hero-text-content h1 {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            letter-spacing: 0.15em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        @media (max-width: 768px) {
+            .hero-text-content h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* =======================================
+           プラン概要セクション
+           ======================================= */
+        .plan-overview-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        @media (min-width: 768px) {
+            .plan-overview-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .plan-card {
+            background-color: var(--color-light);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+        }
+        .plan-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.75rem;
+            color: var(--color-accent);
+            margin-bottom: 0.75rem;
+        }
+        .plan-card p {
+            color: #4b5563;
+        }
+        .plan-card ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 1.5rem;
+        }
+        .plan-card li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            color: var(--color-primary);
+            font-weight: 500;
+        }
+        .plan-card li i {
+            color: var(--color-accent);
+            margin-right: 0.75rem;
+        }
+
+        /* =======================================
+           料金テーブル
+           ======================================= */
+        .pricing-table-container {
+            margin-top: 3rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        @media (min-width: 1024px) {
+            .pricing-table-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .pricing-plan {
+            background-color: var(--color-light);
+            border-radius: 0.75rem;
+            padding: 2.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, border 0.3s ease;
+            border: 2px solid transparent;
+            text-align: center;
+        }
+
+        .pricing-plan.featured {
+            border-color: var(--color-accent);
+            background-color: var(--color-secondary);
+            transform: translateY(-5px);
+        }
+
+        .pricing-plan h4 {
+            font-family: var(--font-serif);
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+        .pricing-plan .price-tag {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-accent);
+            line-height: 1;
+        }
+        .pricing-plan .price-tag small {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #4b5563;
+            margin-left: 0.25rem;
+        }
+        .pricing-plan .sub-text {
+            color: #6b7280;
+            margin-top: 0.5rem;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+        .pricing-plan .benefits {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+        .pricing-plan .benefits li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+        .pricing-plan .benefits li i {
+            color: var(--color-accent);
+            margin-right: 0.75rem;
+        }
+        
+        .pricing-plan .btn-center {
+            margin-top: 2rem;
+        }
+        
+        /* 初回体験セクション */
+        .bg-accent-light {
+            background-color: var(--color-secondary);
+        }
+
+        .trial-flow-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: flex-start;
+            text-align: left;
+            padding: 1rem;
+            background-color: var(--color-light);
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .flow-number {
+            font-size: 2.5rem;
+            font-family: var(--font-serif);
+            color: var(--color-accent);
+            font-weight: 700;
+            margin-right: 1.5rem;
+            line-height: 1;
+        }
+        .flow-content h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-primary);
+        }
+        .flow-content p {
+            color: #4b5563;
+        }
+
+        @media (min-width: 768px) {
+             .trial-flow-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .flow-step {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+            .flow-number {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+            .flow-content h4 {
+                text-align: center;
+            }
+            .flow-content p {
+                text-align: center;
+            }
+
+            /* 流れを示す矢印 */
+            .flow-step:not(:last-child)::after {
+                content: '\f0da'; /* Font Awesome right arrow */
+                font-family: 'Font Awesome 6 Free';
+                font-weight: 900;
+                position: absolute;
+                right: -1.25rem;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #d1d5db; /* gray-300 */
+                font-size: 2rem;
+                z-index: 10;
+                display: none; /* デフォルトは非表示 */
+            }
+             @media (min-width: 1024px) {
+                 .flow-step:not(:last-child)::after {
+                    right: auto;
+                    left: calc(100% + 0.5rem);
+                    display: block;
+                 }
+                 .trial-flow-grid {
+                    grid-template-columns: repeat(4, 1fr); /* 4ステップなので */
+                 }
+             }
+        }
+        
+        .cta-center {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+
+        /* =======================================
+           最終CTA
+           ======================================= */
+        .final-cta-section {
+            background-color: #2c2c2c;
+            color: var(--color-light);
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+        .final-cta-section h3 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .final-cta-section p {
+            color: #d1d5db;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. ヘッダー (一貫性のあるナビゲーション) -->
+    <header class="header-main">
+        <div class="max-width-container header-content">
+            <a href="index.html" class="logo">【スタジオ名】</a>
+            
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="index.html">トップ</a></li>
+                    <li class="active"><a href="service.html">サービス</a></li>
+                    <li><a href="instructors.html">インストラクター</a></li>
+                    <li><a href="philosophy.html">スタジオ紹介</a></li>
+                </ul>
+            </nav>
+            
+            <a href="booking.html" class="cta-btn-primary">ご予約</a>
+        </div>
+    </header>
+
+    <!-- 2. ページタイトル (FV) -->
+    <div class="service-hero text-center">
+        <div class="hero-text-content">
+            <p>LESSON & PRICING</p>
+            <h1>サービスと料金プラン</h1>
+        </div>
+    </div>
+
+    <!-- 3. プラン概要 -->
+    <section class="section-padding">
+        <div class="max-width-container text-center">
+            <p class="section-catch">CHOOSE YOUR FOCUS</p>
+            <h3 class="section-title">あなたの目標に合わせた２つのレッスン形式</h3>
+            <p style="max-width: 800px; margin: 0 auto 3rem; color: #4b5563;">
+                【スタジオ名】では、お客様の**上質なピラティス体験**を保証するため、経験豊富な講師による**プライベート（マンツーマン）**または**セミプライベート（2名まで）**のセッションのみを提供しています。
+            </p>
+
+            <div class="plan-overview-grid">
+                <div class="plan-card">
+                    <h3><i class="fas fa-user"></i> プライベートセッション</h3>
+                    <p>
+                        お客様の体の状態、姿勢、目標に**完全に特化**した、パーソナライズされたプログラムです。体の変化を最速で感じたい方、リハビリや特定の悩みを抱えている方に最適です。
+                    </p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> 姿勢分析とオーダーメイドメニュー</li>
+                        <li><i class="fas fa-check-circle"></i> マシンを最大限活用した効果的なアプローチ</li>
+                        <li><i class="fas fa-check-circle"></i> 疑問をすぐに解決できる深い対話</li>
+                    </ul>
+                </div>
+                <div class="plan-card">
+                    <h3><i class="fas fa-user-friends"></i> セミプライベートセッション</h3>
+                    <p>
+                        ご家族やご友人など、親しい方と**最大2名**で行うセッションです。互いに刺激し合いながら、プライベートの質の高い指導をシェアできる、コストパフォーマンスに優れた形式です。
+                    </p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> プライベートに近い丁寧な指導</li>
+                        <li><i class="fas fa-check-circle"></i> パートナーとのモチベーション維持</li>
+                        <li><i class="fas fa-check-circle"></i> 料金を抑えながら継続したい方に</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 4. 料金プラン詳細 -->
+    <section class="section-padding bg-accent-light">
+        <div class="max-width-container text-center">
+            <p class="section-catch">MEMBERSHIP PLANS</p>
+            <h3 class="section-title">会員料金プラン</h3>
+
+            <div class="pricing-table-container">
+
+                <!-- プライベート 4回パック -->
+                <div class="pricing-plan">
+                    <h4>プライベート (4回/月)</h4>
+                    <p class="price-tag">¥40,000<small>/月</small></p>
+                    <p class="sub-text">（1回あたり ¥10,000）</p>
+                    
+                    <ul class="benefits">
+                        <li><i class="fas fa-dot-circle"></i> 60分セッション x 4回</li>
+                        <li><i class="fas fa-dot-circle"></i> 体幹への意識を習慣化</li>
+                        <li><i class="fas fa-dot-circle"></i> 予約の柔軟性が高い</li>
+                        <li><i class="fas fa-dot-circle"></i> 担当インストラクター制</li>
+                    </ul>
+                    <div class="btn-center">
+                        <a href="booking.html" class="cta-btn-primary">ご予約・詳細</a>
+                    </div>
+                </div>
+
+                <!-- プライベート 8回パック (おすすめ) -->
+                <div class="pricing-plan featured">
+                    <h4>プライベート (8回/月)</h4>
+                    <p class="price-tag">¥72,000<small>/月</small></p>
+                    <p class="sub-text">（1回あたり ¥9,000）</p>
+                    
+                    <ul class="benefits">
+                        <li><i class="fas fa-dot-circle"></i> 60分セッション x 8回</li>
+                        <li><i class="fas fa-dot-circle"></i> **最も早く効果を実感したい方へ**</li>
+                        <li><i class="fas fa-dot-circle"></i> 専門家による月次レポート</li>
+                        <li><i class="fas fa-dot-circle"></i> 優先的な予約枠の確保</li>
+                    </ul>
+                    <div class="btn-center">
+                        <a href="booking.html" class="cta-btn-primary">ご予約・詳細</a>
+                    </div>
+                </div>
+                
+                <!-- セミプライベート 4回パック -->
+                <div class="pricing-plan">
+                    <h4>セミプライベート (4回/月)</h4>
+                    <p class="price-tag">¥28,000<small>/月</small></p>
+                    <p class="sub-text">（1回あたり ¥7,000/人）</p>
+                    
+                    <ul class="benefits">
+                        <li><i class="fas fa-dot-circle"></i> 60分セッション x 4回 (2名様価格)</li>
+                        <li><i class="fas fa-dot-circle"></i> パートナーと楽しく継続</li>
+                        <li><i class="fas fa-dot-circle"></i> プライベートより経済的</li>
+                        <li><i class="fas fa-dot-circle"></i> 質の高いマシン指導</li>
+                    </ul>
+                    <div class="btn-center">
+                        <a href="booking.html" class="cta-btn-primary">ご予約・詳細</a>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="margin-top: 3rem; color: #4b5563; font-size: 0.875rem;">
+                ※上記価格は税別です。入会金として別途 ¥10,000（税別）を申し受けます。<br>
+                ※チケット制もございます。詳しくは初回体験時にお尋ねください。
+            </p>
+        </div>
+    </section>
+
+    <!-- 5. 初回体験レッスン -->
+    <section class="section-padding">
+        <div class="max-width-container text-center">
+            <p class="section-catch">TRIAL SESSION</p>
+            <h3 class="section-title">初回体験レッスン ¥5,000</h3>
+            
+            <p style="max-width: 700px; margin: 0 auto 2rem; color: #4b5563;">
+                【スタジオ名】では、まずあなたの**身体と向き合う時間**を大切にします。初回体験では、丁寧なカウンセリングと姿勢分析を行った上で、あなた専用のピラティスを体験していただきます。
+            </p>
+
+            <div class="trial-flow-grid">
+                <!-- ステップ1 -->
+                <div class="flow-step">
+                    <span class="flow-number">01</span>
+                    <div class="flow-content">
+                        <h4>ご予約・ヒアリング</h4>
+                        <p>Webサイトまたはお電話でご予約後、目標や健康状態に関する簡単なヒアリングシートにご記入いただきます。</p>
+                    </div>
+                </div>
+                
+                <!-- ステップ2 -->
+                <div class="flow-step">
+                    <span class="flow-number">02</span>
+                    <div class="flow-content">
+                        <h4>姿勢分析とカウンセリング</h4>
+                        <p>インストラクターがあなたの姿勢、体の癖を細かくチェックし、目標をすり合わせます。（約20分）</p>
+                    </div>
+                </div>
+                
+                <!-- ステップ3 -->
+                <div class="flow-step">
+                    <span class="flow-number">03</span>
+                    <div class="flow-content">
+                        <h4>プライベートレッスン体験</h4>
+                        <p>分析結果に基づき、マシンを使った最適なエクササイズを体験していただきます。（約40分）</p>
+                    </div>
+                </div>
+
+                 <!-- ステップ4 -->
+                <div class="flow-step">
+                    <span class="flow-number">04</span>
+                    <div class="flow-content">
+                        <h4>フィードバック・プラン提案</h4>
+                        <p>今後の体の改善プランと、最適な料金プランについてご提案いたします。（ご入会は任意です）</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="cta-center">
+                 <a href="booking.html" class="cta-btn-primary">
+                    初回体験を予約する
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. 最終CTA -->
+    <section class="final-cta-section">
+        <div class="max-width-container">
+            <h3>体が変わると、人生が変わる。</h3>
+            <p>
+                迷っている時間は、美しい姿勢を手に入れる機会損失です。
+                今すぐ、最高品質のピラティスを体験してください。
+            </p>
+            <a href="booking.html" class="cta-btn-primary" style="background-color: var(--color-accent); color: var(--color-primary);">
+                初回体験のご予約はこちら
+            </a>
+        </div>
+    </section>
+
+    <!-- 7. フッター -->
+    <footer class="footer">
+        <div class="max-width-container footer-content">
+            <p class="footer-copyright" style="margin-bottom: 1rem;">© 2024 【スタジオ名】. All Rights Reserved.</p>
+            <div class="footer-links" style="margin-top: 1rem;">
+                <a href="privacy.html">プライバシーポリシー</a>
+                <a href="terms.html">利用規約</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
